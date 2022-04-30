@@ -240,6 +240,8 @@ input, select, textarea {
 			}
 
 		}
+
+
   /*******Adjust font sizes - browser******* */
 	h2 {
 		font-size: 1.75em;
@@ -2546,6 +2548,7 @@ input, select, textarea {
 
 			ul.actions.stacked li {
 				padding: 1.3em 0 0 0;
+        
 			}
 
 				ul.actions.stacked li:first-child {
@@ -2598,6 +2601,7 @@ input, select, textarea {
 					flex-shrink: 1;
 					padding: 1em 0 0 0;
 					text-align: center;
+
 					width: 100%;
 				}
 
@@ -3795,6 +3799,12 @@ input, select, textarea {
 			color: #b5d5f5;
 		}
 
+    #header .logo {
+      width: 87%;
+      height: "auto";
+      padding: 0em 0em 0.5em 0em ;
+    }
+
 		#header .image {
 			box-shadow: 0 0 0 4px #4696e5, 0 0 0 5px rgba(255, 255, 255, 0.25);
 		}
@@ -3943,7 +3953,7 @@ input, select, textarea {
 			#header {
 				background-image: url("images/overlay.png"), url("images/pattern-size2.svg");
 			}
-
+ 
 		}
 
 		@media screen and (max-width: 980px) {
@@ -3956,6 +3966,11 @@ input, select, textarea {
 				#header .content {
 					margin: -2em 4em 0 0;
 				}
+        #header .logo {
+          width: 80%;
+          height: "auto";
+          padding: 0em 0em 0.5em 0em ;
+        }
 
 					#header .content .actions {
 						-moz-justify-content: center;
@@ -3985,7 +4000,14 @@ input, select, textarea {
 
 				#header .image {
 					overflow: hidden;
+          width:100%
 				}
+
+        #header .logo {
+          width: 100%;
+          height: "auto";
+          padding: 0em 0em 0.5em 0em ;
+        }
 
 		}
 
