@@ -282,6 +282,9 @@ input, select, textarea {
 		h4 {
 			font-size: 1.5em;
 		}
+		ul {
+			font-size: 0.7em;
+		}
 
 	}
 
@@ -1910,7 +1913,7 @@ input, select, textarea {
 		input[type="button"].icon,
 		button.icon,
 		.button.icon {
-			padding-left: 1.35em;
+			padding-left: .35em;
 		}
 
 			input[type="submit"].icon:before,
@@ -1918,7 +1921,7 @@ input, select, textarea {
 			input[type="button"].icon:before,
 			button.icon:before,
 			.button.icon:before {
-				margin-right: 0.5em;
+				margin-right: .5em;
 			}
 
 		input[type="submit"].fit,
@@ -2470,7 +2473,7 @@ input, select, textarea {
 	}
 
 		ul li {
-			padding-left: 0.5em;
+			padding-left: .5em;
 		}
 
 		ul.alt {
@@ -2626,7 +2629,7 @@ input, select, textarea {
 						ul.actions:not(.fixed) li input[type="button"].icon:before,
 						ul.actions:not(.fixed) li button.icon:before,
 						ul.actions:not(.fixed) li .button.icon:before {
-							margin-left: -0.5em;
+							margin-left: -.5em;
 						}
 
 		}
@@ -3801,9 +3804,10 @@ input, select, textarea {
 
     #header .logo {
       width: 85%;
-      height: "auto";
       padding: 0em 0em 0.5em 0em ;
     }
+
+    
 
 		#header .image {
 			box-shadow: 0 0 0 4px #4696e5, 0 0 0 5px rgba(255, 255, 255, 0.25);
@@ -3910,7 +3914,7 @@ input, select, textarea {
 			transform: translateX(0);
 			opacity: 1;
 			text-align: right;
-			margin: -3.5em 4em 0 0;
+			margin: -3.5em 4em 0em 4em;
 		}
 
 			#header .content > :last-child {
@@ -3967,10 +3971,15 @@ input, select, textarea {
 					margin: -2em 4em 0 0;
 				}
         #header .logo {
-          width: 80%;
+          width: 85%;
           height: "auto";
           padding: 0em 0em 0.5em 0em ;
         }
+        #header .button {
+          width: 80%;
+        }
+
+     
 
 					#header .content .actions {
 						-moz-justify-content: center;
@@ -3998,16 +4007,23 @@ input, select, textarea {
 					margin: 0 0 2em 0;
 				}
 
+
 				#header .image {
 					overflow: hidden;
           width:100%
 				}
 
         #header .logo {
-          width: 100%;
+          width: 80%;
           height: "auto";
           padding: 0em 0em 0.5em 0em ;
         }
+
+        
+        #header .app {
+          width: 80%
+        }
+
 
 		}
 
@@ -4047,6 +4063,42 @@ input, select, textarea {
 					width: 15em;
 					max-width: 20vw;
 				}
+
+        #header .app {
+          margin: 0 0 0 0;
+
+        }
+
+  
+					#header .image .inner, #header .image:before, #header .image:after {
+						font-size: 0.8em;
+					}
+
+		}
+
+		@media screen and (max-width: 980px) and (orientation: landscape) {
+
+			#header {
+				padding: 2em 2em 0.1em 2em ;
+        font-size: 1.4em;
+
+			}
+
+				#header .content {
+					margin: 0 2em 2em 0;
+				}
+
+				#header .image {
+					font-size: 0.8em;
+					width: 15em;
+					max-width: 20vw;
+				}
+
+        #header .app {
+          margin: 0 0 0 0;
+
+        }
+
   
 					#header .image .inner, #header .image:before, #header .image:after {
 						font-size: 0.8em;
