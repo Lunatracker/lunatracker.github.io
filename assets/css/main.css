@@ -1940,13 +1940,6 @@ input, select, textarea {
 			font-size: 0.8em;
 		}
 
-		input[type="submit"].large,
-		input[type="reset"].large,
-		input[type="button"].large,
-		button.large,
-		.button.large {
-			font-size: 1.35em;
-		}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
 		input[type="reset"].disabled,
@@ -2511,6 +2504,75 @@ input, select, textarea {
 	}
 
 /* Actions */
+
+	ul.scroller {
+		display: -moz-flex;
+		display: -ms-flex;
+		cursor: default;
+		list-style: none;
+		margin-left: -1em;
+		padding-left: 0;
+	}
+
+  
+  ul.scroller li {
+    padding: 0 0 0 1em;
+    vertical-align: middle;
+  }
+
+  ul.scroller.special {
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+  }
+
+    ul.scroller.special li:first-child {
+      padding-left: 0;
+    }
+
+  ul.scroller.stacked {
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+    ul.scroller.stacked li {
+      padding: 1.3em 0 0 0;
+      
+    }
+
+      ul.scroller.stacked li:first-child {
+        padding-top: 0;
+      }
+
+  ul.scroller.fit {
+    width: calc(100% + 1em);
+  }
+
+    ul.scroller.fit li {
+      -moz-flex-grow: 1;
+      -webkit-flex-grow: 1;
+      -ms-flex-grow: 1;
+      flex-grow: 1;
+      -moz-flex-shrink: 1;
+      -webkit-flex-shrink: 1;
+      -ms-flex-shrink: 1;
+      flex-shrink: 1;
+      width: 100%;
+    }
+
+      ul.scroller.fit li > * {
+        width: 100%;
+      }
+
+    ul.scroller.fit.stacked {
+      width: 100%;
+    }
 
 	ul.actions {
 		display: -moz-flex;
@@ -3928,6 +3990,7 @@ input, select, textarea {
 				justify-content: flex-end;
 			}
 
+
 		#header .image {
 			-moz-transition: opacity 1s ease, -moz-transform 1s ease;
 			-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
@@ -3976,10 +4039,8 @@ input, select, textarea {
           padding: 0em 0em 0.5em 0em ;
         }
         #header .button {
-          width: 80%;
+          width: 45.5%;
         }
-
-     
 
 					#header .content .actions {
 						-moz-justify-content: center;
@@ -4014,14 +4075,18 @@ input, select, textarea {
 				}
 
         #header .logo {
-          width: 80%;
+          width: 90%;
           height: "auto";
-          padding: 0em 0em 0.5em 0em ;
+          padding: 0.5em 0em 0.5em 0em ;
         }
 
         
         #header .app {
-          width: 80%
+          width: 55%
+        }
+
+        #header .button {
+          width: 50%;
         }
 
 
@@ -4063,13 +4128,14 @@ input, select, textarea {
 					width: 15em;
 					max-width: 20vw;
 				}
+				#header  ul   {
+					font-size: .6em;		
+				}
 
         #header .app {
           margin: 0 0 0 0;
-
         }
-
-  
+        
 					#header .image .inner, #header .image:before, #header .image:after {
 						font-size: 0.8em;
 					}
@@ -4096,8 +4162,11 @@ input, select, textarea {
 
         #header .app {
           margin: 0 0 0 0;
-
         }
+
+        #header ul   {
+					font-size: .8em;		
+				}
 
   
 					#header .image .inner, #header .image:before, #header .image:after {
@@ -4118,6 +4187,15 @@ input, select, textarea {
 					max-width: 60vw;
 				}
 		}
+		@media screen and (max-width: 980px) and (orientation: portrait) {
+
+      #header .logo {
+        width: 80%;
+      }
+      #header .actions {
+        width: 100%;
+      }
+		}
 
 	@media screen and (max-width: 480px) and (orientation: landscape) {
 
@@ -4131,6 +4209,9 @@ input, select, textarea {
 			}
 
 			#header .actions {
+				font-size: 0.8em;
+			}
+			#header .scroller {
 				font-size: 0.8em;
 			}
 
