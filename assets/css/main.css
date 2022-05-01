@@ -3983,12 +3983,7 @@ input, select, textarea {
 				margin-bottom: 0;
 			}
 
-			#header .content .actions {
-				-moz-justify-content: -moz-flex-end;
-				-webkit-justify-content: -webkit-flex-end;
-				-ms-justify-content: -ms-flex-end;
-				justify-content: flex-end;
-			}
+
 
 
 		#header .image {
