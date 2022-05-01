@@ -1899,9 +1899,9 @@ input, select, textarea {
 		display: inline-block;
     font-size: 1.5em;
 		font-weight: bold;
-		height: 2.70em;
+		height: 2.0em;
     width: 9.2em;
-		line-height: 2.55em;
+	  line-height: 2.0em;
 		padding: 0 1.65em;
 		text-align: center;
 		text-decoration: none;
