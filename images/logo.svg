@@ -3,13 +3,17 @@
 <!--Generator: Xara Designer (www.xara.com), SVG filter version: 6.2.0.0-->
 <svg stroke-width="0.501" stroke-linejoin="bevel" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" overflow="visible" width="249.84pt" height="65.52pt" viewBox="0 0 249.84 65.52">
  <defs>
-	</defs>
+  <linearGradient id="LinearGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="67.716" y2="52.036" gradientTransform="translate(4.621 7.184)">
+   <stop offset="0" stop-color="#18bbbb"/>
+   <stop offset="1" stop-color="#26d9d9"/>
+  </linearGradient>
+ </defs>
  <g id="Document" fill="none" stroke="black" font-family="Times New Roman" font-size="16" transform="scale(1 -1)">
   <g id="Spread" transform="translate(0 -65.52)">
    <g id="Layer 1">
     <g id="Group" stroke="none">
      <g id="Group_1" stroke-linejoin="miter" stroke-miterlimit="79.8403193612775">
-      <path d="M 3.818,48.013 C 12.277,63.95 32.078,70.018 48.012,61.557 C 63.949,53.098 70.017,33.297 61.555,17.363 C 53.097,1.426 33.299,-4.642 17.361,3.819 C 1.427,12.278 -4.64,32.079 3.818,48.013 Z" fill="#18bbbb" stroke-width="1" marker-start="none" marker-end="none" stroke-miterlimit="19.9600798403194"/>
+      <path d="M 3.818,48.013 C 12.277,63.95 32.078,70.018 48.012,61.557 C 63.949,53.098 70.017,33.297 61.555,17.363 C 53.097,1.426 33.299,-4.642 17.361,3.819 C 1.427,12.278 -4.64,32.079 3.818,48.013 Z" stroke-width="1" marker-start="none" marker-end="none" stroke-miterlimit="19.9600798403194" fill="url(#LinearGradient)"/>
       <path d="M 47.02,15.887 C 34.861,14.678 24.02,23.552 22.808,35.714 C 21.861,45.218 27.079,53.915 35.208,57.841 C 33.711,57.957 32.185,57.954 30.637,57.799 C 16.536,56.395 6.242,43.823 7.647,29.721 C 9.051,15.616 21.62,5.322 35.725,6.727 C 43.67,7.52 50.406,11.853 54.522,18.007 C 52.229,16.893 49.705,16.154 47.02,15.887 Z" fill="#ffffff" stroke-width="2" marker-start="none" marker-end="none" stroke-miterlimit="19.9600798403194"/>
      </g>
      <g id="Group_2" fill-rule="nonzero" stroke-linejoin="round" stroke-linecap="round" stroke-width="0.375" fill="#ffffff" stroke-miterlimit="79.8403193612775">
