@@ -340,13 +340,20 @@ a:hover {
   animation-delay: 4s;
 }
 
-/* App Store Buttons */
+.app-downloads-hero {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
 .app-buttons {
   display: flex;
   gap: 16px;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 48px;
+  margin-bottom: 0px;
 }
 
 .app-btn {
@@ -365,6 +372,22 @@ a:hover {
 .app-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+}
+
+.free-note {
+  font-family: "Caveat", cursive;
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-top: 4px;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+/* Adjust for footer */
+.footer .free-note {
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
 
 /* Scroll Button */
