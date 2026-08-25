@@ -5,4 +5,14 @@
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://lunatracker.app/privacy.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/terms.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>
