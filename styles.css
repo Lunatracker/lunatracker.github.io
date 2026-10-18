@@ -1314,6 +1314,23 @@ a {
 .article-body .source {
   margin: 4px 8px 0;
 }
+.article-lead {
+  padding: 28px;
+  font-size: 1.25rem;
+}
+.blog-body ul {
+  margin: 0 0 1em;
+  padding-left: 1.3em;
+}
+.blog-body li + li {
+  margin-top: 6px;
+}
+.blog-body li::marker {
+  color: var(--accent, var(--dark));
+}
+.blog-body a {
+  font-weight: 700;
+}
 .more-title {
   font-size: 2rem;
   text-align: center;
@@ -1798,6 +1815,7 @@ a {
   }
   .article-intro,
   .article-section,
+  .article-lead,
   .interactive {
     padding: 20px;
   }

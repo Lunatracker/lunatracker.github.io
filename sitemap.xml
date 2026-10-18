@@ -2,72 +2,137 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lunatracker.app/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/features.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/parents.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn/normal-teen-periods.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn/period-supplies.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn/handling-cramps.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn/first-period.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn/reproductive-system.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn/how-periods-work.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/learn/hormones.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/questions.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://lunatracker.app/blog.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/how-long-does-a-period-last.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/signs-your-first-period-is-coming.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/period-kit-for-school.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/pads-tampons-cups-period-underwear.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/how-to-talk-to-your-parents-about-your-period.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/pms-symptoms-in-teens.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/spotting-vs-period.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/period-blood-color.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/periods-and-sports.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/irregular-periods-in-teens.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/best-period-tracker-for-teens.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://lunatracker.app/blog/preparing-your-child-for-their-first-period.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
     <loc>https://lunatracker.app/privacy.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://lunatracker.app/terms.html</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>yearly</changefreq>
   </url>
 </urlset>

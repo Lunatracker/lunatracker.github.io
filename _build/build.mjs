@@ -16,11 +16,12 @@ import {
   questionSections,
   homeFaq,
 } from "./content.mjs";
+import { posts } from "./blog.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const out = join(here, "..");
 const icons = JSON.parse(readFileSync(join(here, "icons.json"), "utf8"));
-const CSS_VERSION = "20260916k";
+const CSS_VERSION = "20261018a";
 const YEAR = 2026;
 
 /* ---------------------------------------------------------------- helpers */
@@ -51,6 +52,24 @@ const wordCount = (a) =>
     .join(" ")
     .split(/\s+/).length;
 const readMins = (a) => Math.max(1, Math.round(wordCount(a) / 200));
+
+// Blog text: paragraphs, "- " bullet lists, **bold** and [label](root-relative path).
+const inline = (s, root) =>
+  esc(s)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[(.+?)\]\((.+?)\)/g, (_, label, href) => `<a href="${root}${href}">${label}</a>`);
+const rich = (text, root) =>
+  text
+    .split("\n\n")
+    .map((block) => {
+      const lines = block.split("\n");
+      if (lines.every((l) => l.startsWith("- ")))
+        return `<ul>${lines.map((l) => `<li>${inline(l.slice(2), root)}</li>`).join("")}</ul>`;
+      return `<p>${inline(block, root)}</p>`;
+    })
+    .join("\n");
+const longDate = (iso) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 // The app's CardDecor: four dots and an arc, five fixed layouts.
 const DOTS = [
@@ -205,7 +224,7 @@ function footer(root) {
       <p class="footer-note">
         Luna's articles are for learning, not medical advice. If you're worried about your health, talk to a doctor or a trusted adult.
       </p>
-      <p class="footer-copy">&copy; Dotty Apps LLC ${YEAR}. All rights reserved.</p>
+      <p class="footer-copy">&copy; Dotty Apps LLC ${YEAR}. All rights reserved. <span aria-hidden="true">&middot;</span> <a href="${root}blog.html">Blog</a></p>
     </footer>
   </body>
 </html>
@@ -1078,6 +1097,145 @@ ${downloadBand(root)}
   );
 }
 
+/* ------------------------------------------------------------------ blog */
+
+function blogCard(p, root, index, headingLevel = "h3") {
+  return `<a class="learn-card ${tone(p.color)}" href="${root}blog/${p.slug}.html" style="${accentStyle(p.color)}">
+            <span class="learn-card-top">
+              ${decor(index)}
+              <span class="icon-ring">${icon(p.icon)}</span>
+              <${headingLevel} class="learn-card-title">${esc(p.card)}</${headingLevel}>
+            </span>
+            <span class="learn-card-body">
+              <span class="learn-card-blurb">${esc(p.blurb)}</span>
+              <span class="learn-card-meta">${readMins(p)} min read ${icon("arrowRight")}</span>
+            </span>
+          </a>`;
+}
+
+function blogHub() {
+  const root = "";
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "The Luna Blog",
+    url: `${SITE}blog.html`,
+    publisher: { "@type": "Organization", name: "Dotty Apps LLC" },
+    blogPost: posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: `${SITE}blog/${p.slug}.html`,
+      datePublished: p.date,
+    })),
+  };
+  return (
+    head({
+      title: "Blog: Periods, Puberty & Growing Up | Luna",
+      description:
+        "Guides for teens, tweens and parents about periods: first period signs, cycle length, PMS, spotting, period products, school period kits and more.",
+      path: "blog.html",
+      root,
+      extra: jsonLd(ld),
+    }) +
+    nav(root, "blog") +
+    `
+    <main id="main">
+      <section class="page-hero">
+        <div class="hero-card page-hero-card tone-light" style="${accentStyle("pink")}">
+          ${decor(1)}
+          <span class="icon-ring">${icon("notebook")}</span>
+          <h1>The Luna Blog</h1>
+        </div>
+        <p class="page-hero-sub">Guides about periods and growing up, for teens, tweens and the grown-ups who help them.</p>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="learn-grid">
+          ${posts.map((p, i) => blogCard(p, root, i, "h2")).join("\n          ")}
+          </div>
+        </div>
+      </section>
+${downloadBand(root)}
+    </main>` +
+    footer(root)
+  );
+}
+
+function blogPost(p, index) {
+  const root = "../";
+  const body = p.sections
+    .map((s) =>
+      s.header
+        ? `
+        <section class="article-section tile">
+          <h2>${esc(s.header)}</h2>
+          ${rich(s.text, root)}
+        </section>`
+        : `
+        <div class="article-lead tile">
+          ${rich(s.text, root)}
+        </div>`
+    )
+    .join("");
+  const related = p.related.map((slug) => [articles.find((a) => a.slug === slug), articles.findIndex((a) => a.slug === slug)]);
+  const others = posts.filter((x) => x !== p);
+  const more = others[index % others.length];
+
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: p.title,
+    description: p.description,
+    image: `${SITE}images/phone.png`,
+    url: `${SITE}blog/${p.slug}.html`,
+    datePublished: p.date,
+    dateModified: p.updated || p.date,
+    author: { "@type": "Organization", name: "Luna" },
+    publisher: { "@type": "Organization", name: "Dotty Apps LLC" },
+  };
+
+  return (
+    head({
+      title: `${p.title} | Luna`,
+      description: p.description,
+      path: `blog/${p.slug}.html`,
+      root,
+      extra: jsonLd(ld),
+    }) +
+    nav(root, "blog") +
+    `
+    <main id="main" class="article">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../blog.html">${icon("arrowLeft")} All posts</a>
+      </nav>
+      <header class="page-hero">
+        <div class="hero-card page-hero-card ${tone(p.color)}" style="${accentStyle(p.color)}">
+          ${decor(index)}
+          <span class="icon-ring">${icon(p.icon)}</span>
+          <h1>${esc(p.title)}</h1>
+        </div>
+        <p class="page-hero-sub">${esc(p.blurb)}</p>
+        <p class="article-meta">${readMins(p)} min read · <time datetime="${p.date}">${longDate(p.date)}</time></p>
+      </header>
+      <div class="article-body blog-body">${body}
+        <p class="source">This article is for learning, not medical advice. If you're worried about your health, talk to a doctor or a trusted adult.</p>
+      </div>
+
+      <section class="section" aria-labelledby="more-title">
+        <div class="container">
+          <h2 class="more-title" id="more-title">Keep reading</h2>
+          <div class="learn-grid">
+          ${related.map(([a, i]) => learnCard(a, root, i)).join("\n          ")}
+          ${blogCard(more, root, posts.indexOf(more))}
+          </div>
+        </div>
+      </section>
+${downloadBand(root)}
+    </main>` +
+    footer(root)
+  );
+}
+
 /* ----------------------------------------------------------------- legal */
 
 function legalPage(slug, title, description) {
@@ -1102,6 +1260,8 @@ write("parents.html", parentsPage());
 write("learn.html", learnHub());
 articles.forEach((a, i) => write(`learn/${a.slug}.html`, articlePage(a, i)));
 write("questions.html", questionsPage());
+write("blog.html", blogHub());
+posts.forEach((p, i) => write(`blog/${p.slug}.html`, blogPost(p, i)));
 write(
   "privacy.html",
   legalPage(
@@ -1126,6 +1286,8 @@ const pages = [
   ["learn.html", "monthly"],
   ...articles.map((a) => [`learn/${a.slug}.html`, "yearly"]),
   ["questions.html", "monthly"],
+  ["blog.html", "weekly"],
+  ...posts.map((p) => [`blog/${p.slug}.html`, "yearly"]),
   ["privacy.html", "yearly"],
   ["terms.html", "yearly"],
 ];

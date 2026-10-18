@@ -24,6 +24,7 @@ python -m http.server 8080
 - **`_build/content.mjs`**: all copy that isn't layout: Learn articles, Question Box, home FAQ, store links, app color tokens. Articles and questions are copied from the Luna app (`C:/dev/Luna/apps/mobile/app/screens/Learn`); keep them in sync by hand. Don't edit the app from here.
 - **`_build/build.mjs`**: page templates (shared nav/footer) and page bodies for home, features, parents, learn hub, articles, questions, privacy, terms; also writes `sitemap.xml`. Bump `CSS_VERSION` to cache-bust `styles.css` and `site.js`.
 - **`_build/content/privacy.html`, `terms.html`**: legal page bodies.
+- **`_build/blog.mjs`**: blog posts (SEO articles written for the site, not from the app). Text supports blank-line paragraphs, `- ` bullet lists, `**bold**` and `[label](root-relative path)`. Builds `blog.html` and `blog/<slug>.html`. The blog is linked only from the footer's bottom line, never the top nav.
 - **`_build/icons.json`**: Material Design Icons SVG paths (same icon set the app uses).
 - Pages: `index.html`, `features.html`, `parents.html`, `learn.html` (hub), `learn/<slug>.html` (7 articles), `questions.html` (Question Box, with search), `privacy.html`, `terms.html`.
 - JSON-LD: home has `MobileApplication` + `FAQPage` (generated from `homeFaq`, so it always matches the visible FAQ); articles have `Article`; learn hub has `ItemList`.
