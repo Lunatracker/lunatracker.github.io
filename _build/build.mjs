@@ -22,6 +22,10 @@ const out = join(here, "..");
 const icons = JSON.parse(readFileSync(join(here, "icons.json"), "utf8"));
 const CSS_VERSION = "20260916k";
 const YEAR = 2026;
+// When the Learn articles went live on the site. Give an article an `updated`
+// date in content.mjs when its copy changes.
+const ARTICLES_PUBLISHED = "2026-09-16";
+const ORG = { "@type": "Organization", name: "Dotty Apps LLC", url: SITE };
 
 /* ---------------------------------------------------------------- helpers */
 
@@ -52,6 +56,16 @@ const wordCount = (a) =>
     .split(/\s+/).length;
 const readMins = (a) => Math.max(1, Math.round(wordCount(a) / 200));
 
+// width/height attributes read from the PNG header, so images reserve space.
+const dims = (src) => {
+  const b = readFileSync(join(out, src));
+  return `width="${b.readUInt32BE(16)}" height="${b.readUInt32BE(20)}"`;
+};
+
+const updated = (a) => a.updated || ARTICLES_PUBLISHED;
+const longDate = (iso) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+
 // The app's CardDecor: four dots and an arc, five fixed layouts.
 const DOTS = [
   [[16, "top:10px;left:18px"], [24, "top:22px;left:38px"], [10, "top:60px;left:48px"], [18, "top:20px;right:22px"]],
@@ -77,7 +91,7 @@ const NAV = [
   ["parents.html", "For Parents", "parents"],
 ];
 
-function head({ title, description, path, root, extra = "", ogImage }) {
+function head({ title, description, path, root, extra = "", ogImage, noindex = false }) {
   const url = SITE + path;
   const image = ogImage ? SITE + ogImage : `${SITE}images/phone.png`;
   return `<!doctype html>
@@ -87,7 +101,7 @@ function head({ title, description, path, root, extra = "", ogImage }) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(description)}" />
-    <link rel="canonical" href="${url}" />
+    ${noindex ? `<meta name="robots" content="noindex" />` : `<link rel="canonical" href="${url}" />`}
     <link rel="icon" type="image/png" href="${root}images/base.png" />
     <link rel="apple-touch-icon" href="${root}images/base.png" />
     <meta name="theme-color" content="#fff0db" />
@@ -124,7 +138,7 @@ function nav(root, active) {
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="nav-inner">
-        <a class="brand brand-header" href="${root}index.html" aria-label="Luna home">
+        <a class="brand brand-header" href="${root || "./"}" aria-label="Luna home">
           <img class="brand-moon" src="${root}images/splash-icon.png" alt="" width="454" height="495" />
           <span class="wordmark">Luna</span>
         </a>
@@ -134,7 +148,7 @@ function nav(root, active) {
         </button>
         <nav class="site-nav" id="site-nav" aria-label="Main">
           ${links}
-          <a class="btn btn-small" href="${root}index.html#download">Get the app</a>
+          <a class="btn btn-small" href="${root || "./"}#download">Get the app</a>
         </nav>
       </div>
     </header>`;
@@ -170,7 +184,7 @@ function footer(root) {
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a class="brand" href="${root}index.html">${brandMark(34)}<span class="wordmark">Luna</span></a>
+          <a class="brand" href="${root || "./"}">${brandMark(34)}<span class="wordmark">Luna</span></a>
           <p>The period tracker made for teens and tweens. Made by a teacher.</p>
           ${badges(root, "footer")}
         </div>
@@ -180,8 +194,8 @@ function footer(root) {
             <ul>
               <li><a href="${root}features.html">Features</a></li>
               <li><a href="${root}parents.html">For parents</a></li>
-              <li><a href="${root}index.html#faq">FAQ</a></li>
-              <li><a href="${root}index.html#download">Download</a></li>
+              <li><a href="${root || "./"}#faq">FAQ</a></li>
+              <li><a href="${root || "./"}#download">Download</a></li>
             </ul>
           </div>
           <div>
@@ -269,8 +283,9 @@ function homePage() {
     image: `${SITE}images/phone.png`,
     description:
       "Luna is a period tracker built for teens, tweens, and anyone starting their period. Cycle predictions designed for teen bodies, prep-day reminders, interactive lessons, and a Question Box of answers. No ads, and your data is never sold.",
-    author: { "@type": "Organization", name: "Dotty Apps LLC" },
+    author: { ...ORG, email: CONTACT },
     installUrl: APP_STORE,
+    sameAs: [APP_STORE, PLAY_STORE],
   };
   const faq = {
     "@context": "https://schema.org",
@@ -292,7 +307,7 @@ function homePage() {
     head({
       title: "Luna: Period Tracker for Teens & Tweens",
       description:
-        "A period tracker made for teens and tweens. Predictions designed for young cycles, prep-day reminders, interactive lessons, and answers to your period questions. No ads, ever.",
+        "Luna is a period tracker made for teens and tweens: predictions designed for young cycles, prep-day reminders, interactive lessons, and no ads, ever.",
       path: "",
       root,
       extra: `${jsonLd(app)}\n${jsonLd(faq)}`,
@@ -648,7 +663,7 @@ function featuresPage() {
     head({
       title: "Features: Luna Period Tracker for Teens",
       description:
-        "Everything in Luna: teen-friendly period predictions, prep days, discreet reminders, symptom and mood logging, themes, stickers, lessons, a Question Box, passcode lock and parent linking.",
+        "Teen-friendly period predictions, prep days, discreet reminders, symptom and mood logging, lessons, a Question Box, passcode lock and parent linking.",
       path: "features.html",
       root,
     }) +
@@ -811,7 +826,7 @@ function learnHub() {
     head({
       title: "Learn: Period Lessons for Teens | Luna",
       description:
-        "Every lesson from Luna's Learn tab: normal teen periods, period supplies, handling cramps, your first period, the reproductive system, the menstrual cycle, and hormones.",
+        "Period lessons for teens: normal teen periods, period supplies, cramps, your first period, the reproductive system, the menstrual cycle and hormones.",
       path: "learn.html",
       root,
       extra: jsonLd(list),
@@ -845,7 +860,7 @@ function bodyInteractive(a) {
   const layers = a.parts
     .map(({ id, img, box: [x, y, w, h], name }) => {
       const style = `left:${((x / 721) * 100).toFixed(3)}%;top:${((y / 596) * 100).toFixed(3)}%;width:${((w / 721) * 100).toFixed(3)}%;height:${((h / 596) * 100).toFixed(3)}%`;
-      return `<img class="body-layer" data-part="${id}" src="../${img}" alt="" style="${style}" />`;
+      return `<img class="body-layer" data-part="${id}" src="../${img}" alt="" ${dims(img)} style="${style}" />`;
     })
     .join("\n              ");
   const buttons = a.parts
@@ -940,12 +955,12 @@ function articlePage(a, index) {
     body = a.sections
       .map((s, i) => {
         const img = s.img
-          ? `<div class="section-art" style="${accentStyle(a.color)}"><img src="../${s.img}" alt="" loading="lazy" /></div>`
+          ? `<div class="section-art" style="${accentStyle(a.color)}"><img src="../${s.img}" alt="" ${dims(s.img)} loading="lazy" /></div>`
           : "";
         if (i === 0 && !s.header) {
           return `
         <div class="article-intro tile">
-          <div class="section-art" style="${accentStyle(a.color)}"><img src="../${a.image}" alt="" /></div>
+          <div class="section-art" style="${accentStyle(a.color)}"><img src="../${a.image}" alt="" ${dims(a.image)} /></div>
           <div>${paras(s.text)}</div>
         </div>`;
         }
@@ -963,7 +978,7 @@ function articlePage(a, index) {
       body =
         `
         <div class="article-intro tile only-art">
-          <div class="section-art" style="${accentStyle(a.color)}"><img src="../${a.image}" alt="" /></div>
+          <div class="section-art" style="${accentStyle(a.color)}"><img src="../${a.image}" alt="" ${dims(a.image)} /></div>
         </div>` + body;
     }
   }
@@ -972,17 +987,22 @@ function articlePage(a, index) {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: a.title,
-    description: a.blurb,
+    description: a.metaDescription || a.blurb,
     image: SITE + a.image,
     url: `${SITE}learn/${a.slug}.html`,
-    publisher: { "@type": "Organization", name: "Dotty Apps LLC" },
+    mainEntityOfPage: `${SITE}learn/${a.slug}.html`,
+    inLanguage: "en",
+    datePublished: ARTICLES_PUBLISHED,
+    dateModified: updated(a),
+    author: { ...ORG, name: "The Luna team" },
+    publisher: { ...ORG, logo: { "@type": "ImageObject", url: `${SITE}images/base.png` } },
     audience: { "@type": "PeopleAudience", suggestedMinAge: 9 },
   };
 
   return (
     head({
-      title: `${a.title} | Luna`,
-      description: a.blurb,
+      title: `${a.seoTitle || a.title} | Luna`,
+      description: a.metaDescription || a.blurb,
       path: `learn/${a.slug}.html`,
       root,
       extra: jsonLd(ld),
@@ -1001,7 +1021,7 @@ function articlePage(a, index) {
           <h1>${esc(a.title)}</h1>
         </div>
         <p class="page-hero-sub">${esc(a.blurb)}</p>
-        <p class="article-meta">${a.kind ? "Interactive · " : ""}${readMins(a)} min read · From the Luna app's Learn tab</p>
+        <p class="article-meta">${a.kind ? "Interactive · " : ""}${readMins(a)} min read · By the Luna team · Updated <time datetime="${updated(a)}">${longDate(updated(a))}</time></p>
       </header>
       <div class="article-body">${body}
         ${sourceLink(a.source)}
@@ -1049,6 +1069,17 @@ function questionsPage() {
       description: `Real questions from teens about periods, puberty, self care, the reproductive system and more, answered in plain words by the Luna app.`,
       path: "questions.html",
       root,
+      extra: jsonLd({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: questionSections.flatMap((s) =>
+          s.items.map(({ q, a }) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          }))
+        ),
+      }),
     }) +
     nav(root, "questions") +
     `
@@ -1094,6 +1125,45 @@ ${inner}
   );
 }
 
+/* ------------------------------------------------------------------- 404 */
+
+// GitHub Pages serves this for any missing path, at any depth, so links are
+// root-relative.
+function notFoundPage() {
+  const root = "/";
+  return (
+    head({
+      title: "Page not found | Luna",
+      description: "That page doesn't exist. Try Luna's lessons, the Question Box, or the home page.",
+      path: "404.html",
+      root,
+      noindex: true,
+    }) +
+    nav(root, "") +
+    `
+    <main id="main">
+      <section class="page-hero">
+        <div class="hero-card page-hero-card tone-light" style="${accentStyle("purple")}">
+          ${decor(3)}
+          <span class="icon-ring">${icon("cloudQuestion")}</span>
+          <h1>We can't find that page</h1>
+        </div>
+        <p class="page-hero-sub">It may have moved. Here are some good places to start.</p>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="learn-grid">
+          ${articles.slice(0, 2).map((a, i) => learnCard(a, root, i)).join("\n          ")}
+          ${questionBoxCard(root, 2)}
+          </div>
+        </div>
+      </section>
+${downloadBand(root)}
+    </main>` +
+    footer(root)
+  );
+}
+
 /* ----------------------------------------------------------------- build */
 
 write("index.html", homePage());
@@ -1102,6 +1172,7 @@ write("parents.html", parentsPage());
 write("learn.html", learnHub());
 articles.forEach((a, i) => write(`learn/${a.slug}.html`, articlePage(a, i)));
 write("questions.html", questionsPage());
+write("404.html", notFoundPage());
 write(
   "privacy.html",
   legalPage(
@@ -1124,7 +1195,7 @@ const pages = [
   ["features.html", "monthly"],
   ["parents.html", "monthly"],
   ["learn.html", "monthly"],
-  ...articles.map((a) => [`learn/${a.slug}.html`, "yearly"]),
+  ...articles.map((a) => [`learn/${a.slug}.html`, "yearly", updated(a)]),
   ["questions.html", "monthly"],
   ["privacy.html", "yearly"],
   ["terms.html", "yearly"],
@@ -1136,13 +1207,44 @@ write(
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages
   .map(
-    ([p, freq]) => `  <url>
+    ([p, freq, lastmod = today]) => `  <url>
     <loc>${SITE}${p}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${freq}</changefreq>
   </url>`
   )
   .join("\n")}
 </urlset>
+`
+);
+
+// Plain-text overview for AI assistants (https://llmstxt.org).
+write(
+  "llms.txt",
+  `# Luna: Period Tracker for Teens
+
+> Luna is a period tracker app for teens, tweens, and anyone starting their period, made by Dotty Apps LLC for iOS and Android. It has cycle predictions designed for young, still-irregular cycles, prep-day reminders before a period is due, symptom, flow and mood logging, interactive lessons, and a Question Box of answers to common period and puberty questions. Luna has no ads and never sells user data. A parent or guardian can optionally link to a child's Luna to see upcoming periods; the child's notes stay private. Luna+ is an optional subscription that adds backup, photo backgrounds and stickers, and covers a linked child's backup.
+
+Contact: ${CONTACT}
+
+## App
+
+- [Home](${SITE}): what Luna is, who it's for, and an FAQ
+- [Features](${SITE}features.html): everything the app does
+- [For parents](${SITE}parents.html): how parent linking works and what parents can and can't see
+- [App Store](${APP_STORE})
+- [Google Play](${PLAY_STORE})
+
+## Learn
+
+Lessons for teens and pre-teens, written in plain words and copied from the app's Learn tab.
+
+${articles.map((a) => `- [${a.title}](${SITE}learn/${a.slug}.html): ${a.metaDescription || a.blurb}`).join("\n")}
+- [Question Box](${SITE}questions.html): ${questionSections.reduce((n, s) => n + s.items.length, 0)} questions about ${questionSections.map((s) => s.title.toLowerCase()).join(", ")}
+
+## Policies
+
+- [Privacy Policy](${SITE}privacy.html)
+- [Terms of Service](${SITE}terms.html)
 `
 );

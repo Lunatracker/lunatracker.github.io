@@ -1,0 +1,31 @@
+# Luna: Period Tracker for Teens
+
+> Luna is a period tracker app for teens, tweens, and anyone starting their period, made by Dotty Apps LLC for iOS and Android. It has cycle predictions designed for young, still-irregular cycles, prep-day reminders before a period is due, symptom, flow and mood logging, interactive lessons, and a Question Box of answers to common period and puberty questions. Luna has no ads and never sells user data. A parent or guardian can optionally link to a child's Luna to see upcoming periods; the child's notes stay private. Luna+ is an optional subscription that adds backup, photo backgrounds and stickers, and covers a linked child's backup.
+
+Contact: hello@lunatracker.app
+
+## App
+
+- [Home](https://lunatracker.app/): what Luna is, who it's for, and an FAQ
+- [Features](https://lunatracker.app/features.html): everything the app does
+- [For parents](https://lunatracker.app/parents.html): how parent linking works and what parents can and can't see
+- [App Store](https://apps.apple.com/us/app/luna-period-tracker-for-teens/id1607897488)
+- [Google Play](https://play.google.com/store/apps/details?id=com.evolutus.luna)
+
+## Learn
+
+Lessons for teens and pre-teens, written in plain words and copied from the app's Learn tab.
+
+- [Normal Periods as a Teen (or Pre-teen)](https://lunatracker.app/learn/normal-teen-periods.html): Why periods are irregular for the first couple of years, what counts as normal for teens and pre-teens, and when to talk to a doctor about your cycle.
+- [Period Supplies](https://lunatracker.app/learn/period-supplies.html): Pads, tampons, period underwear, liners and menstrual cups: what each one is and how to use it, plus what to do if you stain your clothes.
+- [Top Tips for Handling Period Cramps](https://lunatracker.app/learn/handling-cramps.html): What causes period cramps, five things that can make them feel better (heat, medicine, exercise, food), and when to talk to a doctor about them.
+- [Your First Period](https://lunatracker.app/learn/first-period.html): Signs your first period is on the way, how to make a period kit, what happens during it, and what to do if it shows up when you're not ready.
+- [The Reproductive System](https://lunatracker.app/learn/reproductive-system.html): An interactive diagram of the uterus, ovaries, fallopian tubes, cervix and vagina. Tap each part to see what it does and how it fits into your period.
+- [The Menstrual Cycle](https://lunatracker.app/learn/how-periods-work.html): Step through a whole menstrual cycle: the period, the uterine lining rebuilding, ovulation, and the next period. An interactive guide for teens.
+- [How Do Hormones Work?](https://lunatracker.app/learn/hormones.html): How estrogen and progesterone change during your cycle, why they can change how you feel, and what to say when someone says you're "just PMSing."
+- [Question Box](https://lunatracker.app/questions.html): 34 questions about periods as a teen, how periods work, self care, talking to adults, puberty, reproductive system, pregnancy, about luna
+
+## Policies
+
+- [Privacy Policy](https://lunatracker.app/privacy.html)
+- [Terms of Service](https://lunatracker.app/terms.html)

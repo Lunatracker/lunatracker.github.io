@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /assets/
+Disallow: /cdn-cgi/
 
 Sitemap: https://lunatracker.app/sitemap.xml

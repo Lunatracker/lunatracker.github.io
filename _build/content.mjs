@@ -80,6 +80,9 @@ const sources = {
 export const articles = [
   {
     slug: "normal-teen-periods",
+    seoTitle: "Is My Period Normal? Irregular Periods in Teens",
+    metaDescription:
+      "Why periods are irregular for the first couple of years, what counts as normal for teens and pre-teens, and when to talk to a doctor about your cycle.",
     card: "Normal Teen Periods",
     title: "Normal Periods as a Teen (or Pre-teen)",
     blurb:
@@ -109,6 +112,9 @@ export const articles = [
   },
   {
     slug: "period-supplies",
+    seoTitle: "Pads, Tampons, Cups & Period Underwear for Teens",
+    metaDescription:
+      "Pads, tampons, period underwear, liners and menstrual cups: what each one is and how to use it, plus what to do if you stain your clothes.",
     card: "Period Supplies",
     title: "Period Supplies",
     blurb:
@@ -154,6 +160,9 @@ export const articles = [
   },
   {
     slug: "handling-cramps",
+    seoTitle: "Period Cramps: Causes and 5 Tips for Relief",
+    metaDescription:
+      "What causes period cramps, five things that can make them feel better (heat, medicine, exercise, food), and when to talk to a doctor about them.",
     card: "Handling Cramps",
     title: "Top Tips for Handling Period Cramps",
     blurb:
@@ -198,6 +207,9 @@ export const articles = [
   },
   {
     slug: "first-period",
+    seoTitle: "Your First Period: Signs It's Coming & What to Pack",
+    metaDescription:
+      "Signs your first period is on the way, how to make a period kit, what happens during it, and what to do if it shows up when you're not ready.",
     card: "Your First Period",
     title: "Your First Period",
     blurb:
@@ -234,6 +246,9 @@ export const articles = [
   },
   {
     slug: "reproductive-system",
+    seoTitle: "Female Reproductive System: Interactive Diagram",
+    metaDescription:
+      "An interactive diagram of the uterus, ovaries, fallopian tubes, cervix and vagina. Tap each part to see what it does and how it fits into your period.",
     card: "Reproductive System",
     title: "The Reproductive System",
     blurb:
@@ -288,6 +303,9 @@ export const articles = [
   },
   {
     slug: "how-periods-work",
+    seoTitle: "How the Menstrual Cycle Works, Step by Step",
+    metaDescription:
+      "Step through a whole menstrual cycle: the period, the uterine lining rebuilding, ovulation, and the next period. An interactive guide for teens.",
     card: "How Periods Work",
     title: "The Menstrual Cycle",
     blurb:
@@ -332,6 +350,9 @@ export const articles = [
   },
   {
     slug: "hormones",
+    seoTitle: "Period Hormones: Estrogen, Progesterone & PMS",
+    metaDescription:
+      "How estrogen and progesterone change during your cycle, why they can change how you feel, and what to say when someone says you're \"just PMSing.\"",
     card: "How Hormones Work",
     title: "How Do Hormones Work?",
     blurb:
