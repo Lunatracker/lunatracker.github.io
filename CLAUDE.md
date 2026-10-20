@@ -14,6 +14,8 @@ node _build/build.mjs
 ```
 No dependencies. Commit the generated HTML; GitHub Pages ignores `_build/` (underscore folder). Don't hand-edit generated pages; changes get overwritten.
 
+After pushing changes to the live site, run the `search-resubmit` skill to tell the user whether to resubmit URLs to Google Search Console and Bing Webmaster Tools.
+
 Preview with any static server (the Reproductive System diagram's click detection needs http, not file://):
 ```
 python -m http.server 8080
