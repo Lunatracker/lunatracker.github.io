@@ -711,6 +711,10 @@ function parentsPage() {
       a: "Yes. A child under 13 (or the age of privacy consent in your country) needs a linked parent account, and a parent gives consent before any of their data is stored in the cloud. Older teens can choose whether to link a parent.",
     },
     {
+      q: "Can I track for a child who doesn't have Luna yet?",
+      a: "Yes. Choose \"I'm a parent,\" then \"I'm tracking for my child.\" You'll answer a few questions about their cycle, then log their periods and symptoms on your own account and see when the next one is likely. This doesn't need Luna+. When your child gets Luna on their own phone, you can link with them and their history moves over.",
+    },
+    {
       q: "Does my child need their own subscription?",
       a: "No. Linking and backup are part of Luna+, and your Luna+ can cover your linked child's backup.",
     },
